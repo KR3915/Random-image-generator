@@ -40,7 +40,7 @@ then you can install requirements using pip
 ```bash
 pip install -r requirements.txt
 ```
-run the project
+run the script
 ```bash
 python '.\image generator.py'
 ```
