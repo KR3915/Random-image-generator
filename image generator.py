@@ -1,35 +1,48 @@
 import numpy as np
 import matplotlib.pyplot as plt
+#define Height and Wdith
+W = None
+H = None
+#error handlers
+while W is None:
+    try:
+        W = int(input("Enter width: "))
+    except ValueError:
+        print("Invalid input. Please enter a whole number for width.")
 
-def make_img():
-    return np.random.rand(35, 35, 3) 
+while H is None:
+    try:
+        H = int(input("Enter height: "))
+    except ValueError:
+        print("Invalid input. Please enter a whole number for height.")
+#create random array
+def make_img(width=W, height= H):
+    return np.random.rand(width, height, 3) 
+#declare variables
+image_list = [] #list of images
+image_list.append(make_img()) #make first image
+current_image_index = 0 #global holding value of current image
+fig, ax = plt.subplots() #conf axis and figure
+image_display = ax.imshow(image_list[current_image_index]) #image displaying
 
-image_list = []
-image_list.append(make_img())
+ax.set_title(f"Image {current_image_index + 1}/{len(image_list)} (use enter to cycle through images, backslash for coming back)") #title for figure
 
-current_image_index = 0
-fig, ax = plt.subplots() 
-
-image_display = ax.imshow(image_list[current_image_index])
-
-ax.set_title(f"Image {current_image_index + 1}/{len(image_list)} (Use Left/Right Arrows)")
-
-def on_key_press(event):
-
+def on_key_press(event): 
+    global saved_image_count
     global current_image_index 
-
+    # cycle thru imgs
     if event.key == "enter":
         image_list.append(make_img())
         current_image_index = (current_image_index + 1) % len(image_list)
     if event.key == "backspace":
         current_image_index = (current_image_index - 1) % len(image_list)
     image_display.set_data(image_list[current_image_index])
+    #set title
+    ax.set_title(f"Image {current_image_index + 1}\n (use enter to cycle through images, backspace for coming back)")
     
-    ax.set_title(f"Image {current_image_index + 1}\n (use enter to cycle through images, backslash for coming back)")
-    
-    fig.canvas.draw_idle() 
+    fig.canvas.draw_idle() #redraw fig
 
-fig.canvas.mpl_connect('key_press_event', on_key_press)
+fig.canvas.mpl_connect('key_press_event', on_key_press)#set events to canvas
 
 plt.show()
 
