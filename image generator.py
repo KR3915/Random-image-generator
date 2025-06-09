@@ -25,7 +25,7 @@ current_image_index = 0 #global holding value of current image
 fig, ax = plt.subplots() #conf axis and figure
 image_display = ax.imshow(image_list[current_image_index]) #image displaying
 
-ax.set_title(f"Image {current_image_index + 1}/{len(image_list)} (use enter to cycle through images, backslash for coming back)") #title for figure
+ax.set_title(f"(use enter to cycle through images, backspace for coming back)") #title for figure
 
 def on_key_press(event): 
     global saved_image_count
@@ -38,7 +38,7 @@ def on_key_press(event):
         current_image_index = (current_image_index - 1) % len(image_list)
     image_display.set_data(image_list[current_image_index])
     #set title
-    ax.set_title(f"Image {current_image_index + 1}\n (use enter to cycle through images, backspace for coming back)")
+    ax.set_title(f"Image {current_image_index + 1}")
     
     fig.canvas.draw_idle() #redraw fig
 
