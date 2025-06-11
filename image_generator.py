@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-#define Height and Wdith
+#define Height and wdith
 W = None
 H = None
 #error handlers
