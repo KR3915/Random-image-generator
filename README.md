@@ -1,5 +1,10 @@
 
 # Random Image Generator & Browser
+![Python](https://img.shields.io/badge/Language-Python-blue?logo=python)
+![Dependencies](https://img.shields.io/badge/Requirements-numpy%20%7C%20matplotlib-yellow)
+![CLI Tool](https://img.shields.io/badge/Interface-Terminal%20%2F%20CLI-informational)
+![Random Images](https://img.shields.io/badge/Generates-Random%20Images-purple)
+
 
 This simple Python script lets you generate random images of a custom size and then browse through them interactively. You can create new images, navigate through your history, and save your favorites as PNG files.
 
